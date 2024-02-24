@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="text">Registration</div>
+    {{#if msg}}
+      <p class="{{msg_type}}">{{msg}}</p>
+    {{/if}}
+    <hr>
+    <form id="registerForm" action="/register" method="post" autocomplete="off">
+    <div class="row" style="width:110%">
+        <div class="col-7">
+            <div class="card card-body" style="border-radius:0px;">
+                <hr />
+                <div class="row mb-3">
+                    <label for="FirstName" class="col-sm-2 col-form-label">FirstName</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="FirstName" class="form-control" id="FirstName" value="{{inputData.FirstName}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="LastName" class="col-sm-2 col-form-label">LastName</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="LastName" class="form-control" id="LastName" value="{{inputData.LastName}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="Email" class="form-control" id="Email" value="{{inputData.Email}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="DateOfBirth" class="col-sm-2 col-form-label">DateOfBirth</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="DateOfBirth" class="form-control" id="DateOfBirth" value="{{inputData.DateOfBirth}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="UserName" class="col-sm-2 col-form-label">UserName</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="UserName" class="form-control" id="UserName" value="{{inputData.UserName}}" readonly style="background-color:white">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="Password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="Password" class="form-control" id="Password">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="ConfirmPassword" class="col-sm-2 col-form-label">ConfirmPassword</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="ConfirmPassword" class="form-control" id="ConfirmPassword">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="btnSubmit" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary col-3">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<script>
+    $(document).on('change keyup paste mouseup', '#LastName', function (e) {
+        var fname = $("#FirstName").val().substring(0, 1).toLowerCase()
+        var lname = $("#LastName").val().toLowerCase();
+        var username = fname + lname + "@email.com";
+        $("#Email").val(username);
+        $("#UserName").val(username);
+    });
+</script>
